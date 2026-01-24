@@ -1,0 +1,19 @@
+[package]
+name = "partyfm_player"
+version = "0.1.0"
+edition = "2021"
+description = "A compact PartyFM streaming player"
+authors = ["CBM"]
+
+[dependencies]
+iced = { version = "0.13", features = ["tokio", "image", "canvas"] }
+rodio = { version = "0.19", default-features = false }
+tokio = { version = "1", features = ["time"] }
+minimp3 = "0.5"
+rustfft = "6.2"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
