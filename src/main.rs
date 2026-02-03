@@ -369,7 +369,7 @@ fn stream_audio(buffer: Arc<Mutex<VecDeque<u8>>>, stop_flag: Arc<Mutex<bool>>, n
     stream.set_read_timeout(Some(Duration::from_secs(30)))
         .map_err(|e| format!("Timeout fejl: {}", e))?;
 
-    let request = "GET /Party128web HTTP/1.1\r\nHost: stream1.partyfm.dk\r\nUser-Agent: PartyFM-Player/1.0\r\nAccept: */*\r\nIcy-MetaData: 1\r\nConnection: keep-alive\r\n\r\n";
+    let request = "GET /Party256web HTTP/1.1\r\nHost: stream1.partyfm.dk\r\nUser-Agent: PartyFM-Player/1.0\r\nAccept: */*\r\nIcy-MetaData: 1\r\nConnection: keep-alive\r\n\r\n";
     stream.write_all(request.as_bytes())
         .map_err(|e| format!("Send fejl: {}", e))?;
 
@@ -831,7 +831,7 @@ impl PartyFMPlayer {
         let volume_row = row![vol_down, Space::with_width(12.0), play_button, Space::with_width(12.0), vol_up]
             .align_y(alignment::Vertical::Center);
 
-        let stream_info = text("128 kbps • stream1.partyfm.dk").size(10).color(Color::from_rgb(0.4, 0.5, 0.6));
+        let stream_info = text("256 kbps • stream1.partyfm.dk").size(10).color(Color::from_rgb(0.4, 0.5, 0.6));
 
         let content = column![
             vertical_space().height(6.0),
